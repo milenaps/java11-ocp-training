@@ -14,10 +14,14 @@ public class Shop {
     public static void main(String[] args) {
         ProductManager pm = new ProductManager(Locale.forLanguageTag("pt-BR"));
 
-        pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+        //pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+        pm.parseProduct("D,101,Tea,1.99,0,2019-09-19");
         pm.printProductReport(101);
 
-        pm.parseReview("101,X,Nice hot cup of tea");
+        pm.parseReview("101,4,Nice hot cup of tea");
+        pm.parseReview("101,2,Rather weak tea");
+        pm.parseReview("101,5,Perfect tea");
+
 
 //        pm.reviewProduct(101, Rating.FOUR_STAR, "Nice hot cup of tea");
 //        pm.reviewProduct(101, Rating.TWO_STAR, "Rather weak tea");
@@ -33,9 +37,10 @@ public class Shop {
 //        pm.reviewProduct(102, Rating.TWO_STAR, "Where is the milk?");
 //        pm.printProductReport(102);
 //
+        pm.parseProduct("F,103,Cake,10.4,0,2019-09-19");
 //        pm.createProduct(103, "Cake", BigDecimal.valueOf(10.55), Rating.NOT_RATED, LocalDate.now().plusDays(2));
-//        pm.reviewProduct(103, Rating.THREE_STAR, "Cake was ok");
-//        pm.printProductReport(103);
+        pm.reviewProduct(103, Rating.THREE_STAR, "Cake was ok");
+        pm.printProductReport(103);
 //
 //        Comparator<Product> ratingSorter = Comparator.comparingInt(p -> p.getRating().ordinal());
 //        Comparator<Product> priceSorter = (p1, p2) -> p2.getPrice().compareTo(p1.getPrice());
